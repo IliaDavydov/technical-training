@@ -1,11 +1,13 @@
 <?xml version="1.0"?>
 <odoo>
+
     <record id="estate_property_view_search" model="ir.ui.view">
         <field name="name">estate_property.search</field>
         <field name="model">estate_property</field>
         <field name="arch" type="xml">
             <search string="Search Properties">
                 <field name="name"/>
+                <field name="property_type_id"/>
                 <field name="postcode"/>
                 <field name="expected_price"/>
                 <field name="bedrooms"/>
@@ -29,6 +31,7 @@
         <field name="arch" type="xml">
             <tree string="My properties list">
                 <field name="name"/>
+                <field name="property_type"/>
                 <field name="postcode"/>
                 <field name="bedrooms"/>
                 <field name="living_area"/>
@@ -47,6 +50,7 @@
                     <group>
                         <group>
                             <field name="name"/>
+                            <field name="property_type"/>
                             <field name="postcode"/>
                             <field name="date_availability"/>
                             <field name="expected_price"/>
@@ -68,6 +72,7 @@
             </form>
         </field>
     </record>
+
     <record id="test_model_action" model="ir.actions.act_window">
         <field name="name">First UI for model</field>
         <field name="res_model">estate_property</field>

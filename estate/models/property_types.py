@@ -36,5 +36,5 @@ class EstateProperty(models.Model):
                                           ('sold', 'Sold'), ('canceled', 'Canceled')],
                              default='new')
     property_type_id = fields.Many2one('estate_property_type')
-    buyer_id = fields.Many2one('res.users')
-    seller_id = fields.Many2many('res.partner')
+    buyer_id = fields.Many2one('res.partner')
+    seller_id = fields.Many2one('res.partner')
