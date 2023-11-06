@@ -74,13 +74,27 @@
     </record>
 
     <record id="test_model_action" model="ir.actions.act_window">
-        <field name="name">First UI for model</field>
+        <field name="name">All Properties</field>
         <field name="res_model">estate_property</field>
         <field name="view_mode">tree,form</field>
     </record>
-    <menuitem id="test_menu_root" name="Test">
-        <menuitem id="test_first_level_menu" name="First Level">
+
+    <record id="test_model_action" model="ir.actions.act_window">
+        <field name="name">All Properties</field>
+        <field name="res_model">estate_property</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="prop_type_actions" model="ir.actions.act_window">
+        <field name="name">Property's types</field>
+        <field name="res_model">estate_property_type</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="test_menu_root" name="My Estate App">
+        <menuitem id="test_first_level_menu" name="Actions">
             <menuitem id="test_model_menu_action" action="test_model_action"/>
+            <menuitem id="prop_type_menu_item" action="prop_type_actions"/>
         </menuitem>
     </menuitem>
 </odoo>
