@@ -1,1 +1,1 @@
-from estate import models
+from . import models
