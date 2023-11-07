@@ -25,16 +25,19 @@
             </search>
         </field>
     </record>
+
+
     <record id="estate_property_view_tree" model="ir.ui.view">
         <field name="name">estate_property.tree</field>
         <field name="model">estate_property</field>
         <field name="arch" type="xml">
-            <tree string="My properties list">
+            <tree string="My properties list" default_order="name desc">
                 <field name="name"/>
-                <field name="property_type_id"/>
+                <field name="property_type_id" options="{'no_create': true}"/>
                 <field name="postcode"/>
                 <field name="bedrooms"/>
                 <field name="living_area"/>
+                <field name="garden_area"/>
                 <field name="expected_price"/>
                 <field name="selling_price"/>
                 <field name="date_availability"/>
@@ -42,12 +45,17 @@
             </tree>
         </field>
     </record>
+    
     <record id="estate_property_view_form" model="ir.ui.view">
         <field name="name">estate_property.form</field>
         <field name="model">estate_property</field>
         <field name="arch" type="xml">
             <form string="Create a new record">
                 <sheet>
+                    <header>
+                          <button name="do_sold" type="object" string="SOLD"/>
+                          <field name="state" widget="statusbar" statusbar_visible="new,offer_accepted,sold"/>
+                    </header>
                     <group>
                         <group>
                             <field name="name"/>
@@ -58,7 +66,15 @@
                             <field name="selling_price"/>
                             <field name="buyer_id"/>
                             <field name="seller_id"/>
-
+                            <field name="total_area"/>
+                            <field name="state"/>
+                            <field name="tag_ids" widget="many2many_tags"/>
+                            <field name="offer_ids">
+                                <tree>
+                                    <field name="price"/>
+                                    <field name="partner_id"/>
+                                </tree>
+                            </field>
                         </group>
                         <notebook>
                             <page string="Description">
@@ -68,6 +84,7 @@
                         <group>
                             <field name="bedrooms"/>
                             <field name="living_area"/>
+                            <field name="garden_area"/>
                             <field name="facades"/>
                             <field name="garage"/>
                         </group>
@@ -80,7 +97,7 @@
     <record id="test_model_action" model="ir.actions.act_window">
         <field name="name">All Properties</field>
         <field name="res_model">estate_property</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,kanban</field>
     </record>
 
     <record id="prop_type_actions" model="ir.actions.act_window">
@@ -94,16 +111,27 @@
         <field name="res_model">offer</field>
         <field name="view_mode">tree,form</field>
     </record>
+    
+    <record id="tags_actions" model="ir.actions.act_window">
+        <field name="name">Tags</field>
+        <field name="res_model">tags</field>
+        <field name="view_mode">tree,form</field>
+    </record>
 
     <menuitem id="test_menu_root" name="My Estate App">
         <menuitem id="test_first_level_menu" name="Actions">
             <menuitem id="test_model_menu_action" action="test_model_action"/>
         </menuitem>
-        <menuitem id="test_first_level_menu2" name="Property Types">
+        
+        <menuitem id="test_first_level_menu2" name="Settings">
             <menuitem id="test_model_menu_action2" action="prop_type_actions"/>
         </menuitem>
-        <menuitem id="offer_menu_item" name="Property Types">
+
+        
+        
+        <menuitem id="offer_menu_item" name="Offers">
             <menuitem id="offer_menu_item_action" action="offer_actions"/>
+            <menuitem id="tags_menu_item_action" action="tags_actions"/>
         </menuitem>
     </menuitem>
 </odoo>
