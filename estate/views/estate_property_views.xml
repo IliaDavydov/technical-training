@@ -38,6 +38,7 @@
                 <field name="expected_price"/>
                 <field name="selling_price"/>
                 <field name="date_availability"/>
+                <field name="total_area"/>
             </tree>
         </field>
     </record>
