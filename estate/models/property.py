@@ -2,13 +2,6 @@ from odoo import fields, models, api
 from datetime import timedelta
 
 
-class EstatePropertyType(models.Model):
-    _name = "estate_property_type"
-    _description = "Properties types"
-
-    name = fields.Char(required=True)
-
-
 class EstateProperty(models.Model):
     _name = "estate_property"
     _description = "Properties of the estate"
@@ -38,8 +31,8 @@ class EstateProperty(models.Model):
     property_type_id = fields.Many2one('estate_property_type')
     buyer_id = fields.Many2one('res.users')
     seller_id = fields.Many2many('res.partner')
-    # total_area = fields.Float(compute="_compute_total_area", store=True)
-    test = fields.Integer()
+    total_area = fields.Float(compute="_compute_total_area", store=True)
+
     @api.depends("living_area", "garden_area")
     def _compute_total_area(self):
         for record in self:
