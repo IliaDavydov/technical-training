@@ -55,6 +55,8 @@
                             <field name="date_availability"/>
                             <field name="expected_price"/>
                             <field name="selling_price"/>
+                            <field name="buyer_id"/>
+                            <field name="seller_id"/>
                         </group>
                         <notebook>
                             <page string="Description">
@@ -79,22 +81,27 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-    <record id="test_model_action" model="ir.actions.act_window">
-        <field name="name">All Properties</field>
-        <field name="res_model">estate_property</field>
+    <record id="prop_type_actions" model="ir.actions.act_window">
+        <field name="name">Property types</field>
+        <field name="res_model">estate_property_type</field>
         <field name="view_mode">tree,form</field>
     </record>
 
-    <record id="prop_type_actions" model="ir.actions.act_window">
-        <field name="name">Property's types</field>
-        <field name="res_model">estate_property_type</field>
+    <record id="offer_actions" model="ir.actions.act_window">
+        <field name="name">Offers</field>
+        <field name="res_model">offer</field>
         <field name="view_mode">tree,form</field>
     </record>
 
     <menuitem id="test_menu_root" name="My Estate App">
         <menuitem id="test_first_level_menu" name="Actions">
             <menuitem id="test_model_menu_action" action="test_model_action"/>
-            <menuitem id="prop_type_menu_item" action="prop_type_actions"/>
+        </menuitem>
+        <menuitem id="test_first_level_menu2" name="Property Types">
+            <menuitem id="test_model_menu_action2" action="prop_type_actions"/>
+        </menuitem>
+        <menuitem id="offer_menu_item" name="Property Types">
+            <menuitem id="offer_menu_item_action" action="offer_actions"/>
         </menuitem>
     </menuitem>
 </odoo>
