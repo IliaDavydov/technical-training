@@ -58,6 +58,7 @@
                             <field name="selling_price"/>
                             <field name="buyer_id"/>
                             <field name="seller_id"/>
+
                         </group>
                         <notebook>
                             <page string="Description">

@@ -38,8 +38,8 @@ class EstateProperty(models.Model):
     property_type_id = fields.Many2one('estate_property_type')
     buyer_id = fields.Many2one('res.users')
     seller_id = fields.Many2many('res.partner')
-    total_area = fields.Float(compute="_compute_total_area", store=True)
-
+    # total_area = fields.Float(compute="_compute_total_area", store=True)
+    test = fields.Integer()
     @api.depends("living_area", "garden_area")
     def _compute_total_area(self):
         for record in self:
